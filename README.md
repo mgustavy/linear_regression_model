@@ -5,9 +5,6 @@
 ## Public API Endpoint
 https://yourrenderapiurl.onrender.com/docs
 
-## YouTube Demo Video
-https://www.youtube.com/watch?v=your_demo_video
-
 ## Running the Mobile App
 - Ensure Flutter is installed.
 - Navigate to `summative/FlutterApp/`.
