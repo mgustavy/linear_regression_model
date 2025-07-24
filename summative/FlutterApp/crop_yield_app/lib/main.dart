@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Crop Yield Predictor',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
@@ -88,7 +89,7 @@ class _CropYieldPredictorPageState extends State<CropYieldPredictorPage> {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         setState(() {
-          _result = "Predicted Yield: ${data['predicted_yield']}";
+          _result = "Predicted Yield: ${data['predicted_yield_ton_per_ha']}";
         });
       } else {
         setState(() {
@@ -99,6 +100,7 @@ class _CropYieldPredictorPageState extends State<CropYieldPredictorPage> {
       setState(() {
         _result = "Error: $e";
       });
+      print("Error during prediction: $e");
     } finally {
       setState(() {
         _loading = false;
