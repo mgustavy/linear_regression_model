@@ -212,29 +212,39 @@ class _CropYieldPredictorPageState extends State<CropYieldPredictorPage> {
                 const SizedBox(height: 16),
                 ElevatedButton(
                   onPressed: _loading ? null : _predictYield,
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                  ),
                   child: _loading
                       ? const SizedBox(
                           height: 20,
                           width: 20,
                           child: CircularProgressIndicator(strokeWidth: 2),
                         )
-                      : const Text('Predict'),
+                      : const Text('Predict', style: TextStyle(color: Colors.white)),
                 ),
                 const SizedBox(height: 16),
                 if (_result != null)
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: Colors.grey[100],
+                  Card(
+                    elevation: 2,
+                    margin: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: Colors.grey.shade300),
                     ),
-                    child: Text(
-                      _result!,
-                      style: TextStyle(
-                        color: _result!.startsWith('Predicted') ? Colors.green[800] : Colors.red[700],
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Text(
+                        _result!,
+                        style: TextStyle(
+                          color: _result!.startsWith('Predicted')
+                              ? Colors.green[700]
+                              : Colors.red[700],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
+                          fontFamily: 'Roboto',
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
