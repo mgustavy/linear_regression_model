@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'pages/results.dart';
 
 void main() {
   runApp(const MyApp());
@@ -88,9 +89,13 @@ class _CropYieldPredictorPageState extends State<CropYieldPredictorPage> {
       );
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
-        setState(() {
-          _result = "Predicted Yield: ${data['predicted_yield_ton_per_ha']}";
-        });
+        final predictedYield = data['predicted_yield_ton_per_ha'] as double;
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultPage(predictedYield: predictedYield),
+          ),
+        );
       } else {
         setState(() {
           _result = "Error: ${response.reasonPhrase}";
@@ -225,29 +230,6 @@ class _CropYieldPredictorPageState extends State<CropYieldPredictorPage> {
                       : const Text('Predict', style: TextStyle(color: Colors.white)),
                 ),
                 const SizedBox(height: 16),
-                if (_result != null)
-                  Card(
-                    elevation: 2,
-                    margin: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(
-                        _result!,
-                        style: TextStyle(
-                          color: _result!.startsWith('Predicted')
-                              ? Colors.green[700]
-                              : Colors.red[700],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17,
-                          fontFamily: 'Roboto',
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
               ],
             ),
           ),
