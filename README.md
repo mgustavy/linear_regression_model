@@ -5,6 +5,8 @@
 This project integrates a linear regression model, an API, and a Flutter app to support data-driven crop yield prediction. By providing accurate yield forecasts, the tools help farmers and stakeholders in Africa plan better, optimize resources, and increase productivity.
 
 ## Brief Description and Source of Data
+Dataset Source: [Source](https://www.kaggle.com/datasets/samuelotiattakorah/agriculture-crop-yield/data)
+
 The dataset contains historical crop yield data, including various factors such as weather conditions, soil quality, and farming practices. This data is used to train the linear regression model to predict future crop yields. The dataset was sourced from Kaggle 
 
 Correlation Heatmap
@@ -14,7 +16,11 @@ Feature Distribution
 ![alt text](image-1.png)
 
 ## Public API Endpoint
-https://linear-regression-model-9w94.onrender.com/docs
+[API Endpoint](https://linear-regression-model-9w94.onrender.com/docs)
+
+## Demo Video
+[Demo](https://www.bugufi.link/MtmjcM)
+
 
 ## Running the Mobile App
 - Ensure Flutter is installed.
